@@ -3,6 +3,7 @@ package org.paomo.viewdraghelper;
 import android.content.Context;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -114,11 +115,13 @@ public class NavigationView extends LinearLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return mDragHelper.shouldInterceptTouchEvent(ev);
+        boolean event = mDragHelper.shouldInterceptTouchEvent(ev);
+        return event;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG,"onTouchEvent" + event.toString());
         mDragHelper.processTouchEvent(event);
         return true;
     }
